@@ -1,5 +1,6 @@
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
+var passwordText = document.querySelector("#password");
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
@@ -9,14 +10,13 @@ var low = "abcdefghijklmnopqrstuvwxyz";
 var up = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numeric = "1234567890";
 var special = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~";
+var randomNum = function (str) {
+  return Math.floor(Math.random() * str.length);
+};
 
 var concatStr = "";
 var generatedPass = "";
 var password = "";
-
-var randomNum = function (str) {
-  return Math.floor(Math.random() * str.length);
-};
 
 // Write password to the #password input
 function writePassword() {
@@ -61,7 +61,6 @@ function writePassword() {
       password += generatedPass[randomNum(generatedPass)];
     }
   }
-
-  var passwordText = document.querySelector("#password");
   passwordText.value = password;
+  password = "";
 }
